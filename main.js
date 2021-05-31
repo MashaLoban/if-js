@@ -41,3 +41,24 @@ for (let i = 0; i < arr2.length; i++) {
         console.log('Ответ Task5:', arr3[i]);
     }
 }
+
+//function: Task1
+const palindrome = (word) => {
+  if (word === word.split('').reverse().join('')) {
+      return true;
+  }
+  return false;
+}
+
+//function: Task2
+const min = (a, b) => a > b ? b : a;
+const max = (a, b) => a > b ? a : b;
+
+//function: Task3
+const changeZero = (arrZero) => {
+    let newArrZero = String(arrZero);
+    newArrZero = newArrZero.replaceAll("0", "zero").split(',');
+         return newArrZero;
+}
+let arrZero = [1, 2, 10, 55, 40, 0, 7, 5, 8, 70];
+console.log(changeZero(arrZero));
