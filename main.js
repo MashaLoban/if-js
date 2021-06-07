@@ -62,3 +62,31 @@ const changeZero = (arrZero) => {
 }
 let arrZero = [1, 2, 10, 55, 40, 0, 7, 5, 8, 70];
 console.log(changeZero(arrZero));
+
+//function: Task 2.1
+function sum(a) {
+    return function (b) {
+      return a + b;
+    };
+  }
+
+//function: Task2.2
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+
+const p = document.querySelectorAll('p');
+
+const changeColorP = () => {
+    let i=0;
+    return (e) => {
+        e.target.style.color = colors[i];
+        i++;
+        if (i >= colors.length) {
+            i = 0;
+        }
+    }
+}
+
+p.forEach((item) => {
+    const painter = changeColorP();
+    item.addEventListener('click', painter);
+});
