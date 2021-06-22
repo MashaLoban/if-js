@@ -339,17 +339,68 @@ console.log(seachString2('USA'));
 
 //НЕ РАБОТАЕТ, подскажи, пожалуйста, как сделать, чтобы заработало
 
-const seachString2 = arrNew.map((item) => {
-  const result = {};
-    for (let key in arrNew) {
-      if (item[key].country == undefined) {
-        result+= `${item[key].country} , ${item[key].city}`;
-      } else {
-        result += `${item[key].city}`;
-      }
-      return result;
+// const seachString2 = arrNew.map((item) => {
+//   const result = {};
+//     for (let key in arrNew) {
+//       if (item[key].country == undefined) {
+//         result+= `${item[key].country} , ${item[key].city}`;
+//       } else {
+//         result += `${item[key].city}`;
+//       }
+//       return result;
 
-    }
-})
+//     }
+// })
 
-console.log(seachString2(hotels2));
+// console.log(seachString2(hotels2));
+
+//lesson-7: Task1.1
+const obj1 = {
+  a: 'a',
+  b: {
+    a: 'a',
+    b: 'b',
+    c: {
+      a: 1,
+    },
+  },
+};
+const obj2 = {
+  b: {
+    c: {
+      a: 1,
+    },
+    b: 'b',
+    a: 'a',
+  },
+  a: 'a',
+};
+const obj3 = {
+  a: {
+    c: {
+      a: 'a',
+    },
+    b: 'b',
+    a: 'a',
+  },
+  b: 'b',
+};
+
+const deepEqual = (object1, object2) => {
+  const prop1 = Object.getOwnPropertyNames(object1);
+  const prop2 = Object.getOwnPropertyNames(object2);
+  if (prop1.length !== prop2.length) {
+      return false;
+  }
+  for (let i = 0; i < prop1.length; i++) {
+    let item = prop1[i]; //название свойства
+    if (((typeof object1[item]) && (typeof object2[item]))!== 'object') {
+      if (object1[item] === object2[item]) {
+        return true;
+      } 
+      return false;
+    } deepEqual(object1[item], object2[item])
+  }
+};
+console.log(deepEqual(obj1, obj2)); // true
+console.log(deepEqual(obj1, obj3)); // false
