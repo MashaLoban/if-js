@@ -70,26 +70,26 @@ function sum(a) {
     };
   }
 
-//function: Task2.2
-const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+// function: Task2.2
+// const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 
-const p = document.querySelectorAll('p');
+// const p = document.querySelectorAll('p');
 
-const changeColorP = () => {
-    let i=0;
-    return (e) => {
-        e.target.style.color = colors[i];
-        i++;
-        if (i >= colors.length) {
-            i = 0;
-        }
-    }
-}
+// const changeColorP = () => {
+//     let i=0;
+//     return (e) => {
+//         e.target.style.color = colors[i];
+//         i++;
+//         if (i >= colors.length) {
+//             i = 0;
+//         }
+//     }
+// }
 
-p.forEach((item) => {
-    const painter = changeColorP();
-    item.addEventListener('click', painter);
-});
+// p.forEach((item) => {
+//     const painter = changeColorP();
+//     item.addEventListener('click', painter);
+// });
 
 //lesson-5: Task1.1
 const date = '2020-12-27';
@@ -387,20 +387,135 @@ const obj3 = {
 };
 
 const deepEqual = (object1, object2) => {
+  if (object1 === null && object2 === null) {
+    return true;
+  }
+  if (object1 === null || object2 === null) {
+    return false;
+  }
   const prop1 = Object.getOwnPropertyNames(object1);
   const prop2 = Object.getOwnPropertyNames(object2);
-  if (prop1.length !== prop2.length) {
+  if (prop1.length != prop2.length) {
       return false;
   }
   for (let i = 0; i < prop1.length; i++) {
     let item = prop1[i]; //название свойства
-    if (((typeof object1[item]) && (typeof object2[item]))!== 'object') {
-      if (object1[item] === object2[item]) {
-        return true;
-      } 
-      return false;
-    } deepEqual(object1[item], object2[item])
+    if (typeof(object1[item]) === 'object' && typeof(object2[item])=== 'object') {
+      if (!deepEqual(object1[item], object2[item])){
+        return false;
+      }
+    }   
+      else {
+        if ((object1[item] !== object2[item])){
+          return false;
+      }
+    }
   }
+  return true;
 };
 console.log(deepEqual(obj1, obj2)); // true
-console.log(deepEqual(obj1, obj3)); // false
+console.log(deepEqual(obj1, obj3));
+console.log(deepEqual({}, {})); 
+
+//lesson-8: Task1.1
+const studentsData = [
+  {
+    firstName: 'Василий',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Java',
+  },
+  {
+    firstName: 'Иван',
+    lastName: 'Иванов',
+    admissionYear: 2018,
+    courseName: 'JavaScript',
+  },
+  {
+    firstName: 'Александр',
+    lastName: 'Федоров',
+    admissionYear: 2017,
+    courseName: 'Python',
+  },
+  {
+    firstName: 'Николай',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Android',
+  }
+];
+
+class User { 
+  constructor(params) { 
+    this.firstName = params.firstName;  
+    this.lastName = params.lastName; 
+  } 
+  get fullName  () { 
+    return `${this.firstName} ${this.lastName}`; 
+  } 
+}
+
+class Student extends User {
+  constructor(params) {
+    super(params);
+    this.admissionYear = params.admissionYear;
+    this.courseName = params.courseName;
+  }
+  get course () {
+    return new Date().getFullYear() - this.admissionYear -1;
+  }
+}
+
+class Students {
+  constructor(studentsData) {
+    this.students = studentsData;
+  }
+  getInfo(){
+    return this.students.sort((student1, student2) =>
+     new Student(student1).course - new Student(student2).course).map(student => `${new User(student).fullName} - ${new Student(student).courseName} - ${new Student(student).course} курс` )
+  }
+}
+const students = new Students(studentsData);
+console.log(students.getInfo());
+
+////lesson-9: Task1.1
+
+let colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue']
+}
+
+colors[Symbol.iterator] = function() {
+  let index = 0;
+  let data = this.data;
+  let last = this.data.length 
+  return {
+    next() {
+      if (index < last) {
+        return {
+          done: false,
+          value: data[index++]
+        };
+      } else {
+        index = 0;
+        return {
+          done: true,
+          value: data[index++]
+        };
+      }
+    }
+
+  }
+};
+  
+const changeColorP = (item) => { 
+  return (e) => { 
+      e.target.style.color = item.next().value;
+  } 
+} 
+
+const p = document.querySelectorAll('p'); 
+
+p.forEach((item) => { 
+  let iter = colors[Symbol.iterator]();
+  item.addEventListener('click', changeColorP(iter)); 
+});
