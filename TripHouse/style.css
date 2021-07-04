@@ -35,7 +35,8 @@
     padding-right: 104px;
   }
   .wrapper__item_home div{
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .wrapper__item_home a {
