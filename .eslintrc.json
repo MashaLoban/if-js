@@ -5,18 +5,16 @@
         "node": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb"
+        "airbnb-base"
     ],
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12
+        "ecmaVersion": 12,
+        "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
     "rules": {
+        "consistent-return": 0,
+        "max-classes-per-file": 0,
+        "no-plusplus": 0,
+        "no-shadow" : 0
     }
 }
