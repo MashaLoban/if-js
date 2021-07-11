@@ -2,74 +2,76 @@
 
 let user = 'John Doe';
 console.log(user);
-let student ='Masha';
+const student = 'Masha';
 console.log(student);
 user = student;
-console.log(user); //Masha
+console.log(user); // Masha
 
-//Task 2
+// Task 2
 let test = 1;
-test += 1; 
+test += 1;
 test += '1';
-console.log(test); //21
+console.log(test); // 21
 test -= 1;
-console.log(test); //20
-test = Boolean(test); //true
+console.log(test); // 20
+test = Boolean(test); // true
 console.log(test);
 
-//Task 3
+// Task 3
 const arr = [2, 3, 5, 8];
 let result = 1;
 for (let i = 0; i < arr.length; i++) {
-    result = result * arr[i];
+  result *= arr[i];
 }
 console.log('Ответ Task3:', result);
 
-//Task4
+// Task4
 const arr2 = [2, 5, 8, 15, 0, 6, 20, 3];
 for (let i = 0; i < arr2.length; i++) {
-    if (arr2[i] > 5 && arr2[i] < 10) {
-        // debugger;
-        console.log('Ответ Task4:', arr2[i]);
-    }
+  if (arr2[i] > 5 && arr2[i] < 10) {
+    // debugger;
+    console.log('Ответ Task4:', arr2[i]);
+  }
 }
 
-//Task 5
+// Task 5
 const arr3 = [2, 5, 8, 15, 0, 6, 20, 3];
 for (let i = 0; i < arr2.length; i++) {
-    if (!(arr3[i] % 2) && arr3[i] !== 0) {
-        console.log('Ответ Task5:', arr3[i]);
-    }
+  if (!(arr3[i] % 2) && arr3[i] !== 0) {
+    console.log('Ответ Task5:', arr3[i]);
+  }
 }
 
-//function: Task1
+// function: Task1
 const palindrome = (word) => {
   if (word === word.split('').reverse().join('')) {
-      return true;
+    return true;
   }
   return false;
-}
+};
+console.log(palindrome('шалаш'));
 
-//function: Task2
-const min = (a, b) => a > b ? b : a;
-const max = (a, b) => a > b ? a : b;
-
-//function: Task3
+// function: Task2
+const min = (a, b) => (a > b ? b : a);
+const max = (a, b) => (a > b ? a : b);
+console.log(min(1, 8));
+console.log(max(2, 7));
+// function: Task3
 const changeZero = (arrZero) => {
-    let newArrZero = String(arrZero);
-    newArrZero = newArrZero.replaceAll("0", "zero").split(',');
-         return newArrZero;
-}
-let arrZero = [1, 2, 10, 55, 40, 0, 7, 5, 8, 70];
+  let newArrZero = String(arrZero);
+  newArrZero = newArrZero.replaceAll('0', 'zero').split(',');
+  return newArrZero;
+};
+const arrZero = [1, 2, 10, 55, 40, 0, 7, 5, 8, 70];
 console.log(changeZero(arrZero));
 
-//function: Task 2.1
+// function: Task 2.1
 function sum(a) {
-    return function (b) {
-      return a + b;
-    };
-  }
-
+  return function (b) {
+    return a + b;
+  };
+}
+console.log(sum(5)(2));
 // function: Task2.2
 // const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 
@@ -91,79 +93,77 @@ function sum(a) {
 //     item.addEventListener('click', painter);
 // });
 
-//lesson-5: Task1.1
+// lesson-5: Task1.1
 const date = '2020-12-27';
 
-const newDate = (oldDate) => {
-    return oldDate.split('-').reverse().join('.');
-} 
+const newDate = (oldDate) => oldDate.split('-').reverse().join('.');
 
 console.log(newDate(date));
 
-//lesson-5: Task1.2
+// lesson-5: Task1.2
 const data = [
-    {
-      country: 'Russia',
-      city: 'Saint Petersburg',
-      hotel: 'Hotel Leopold',
-    },
-    {
-      country: 'Spain',
-      city: 'Santa Cruz de Tenerife',
-      hotel: 'Apartment Sunshine',
-    },
-    {
-      country: 'Slowakia',
-      city: 'Vysokie Tatry',
-      hotel: 'Villa Kunerad',
-    },
-    {
-      country: 'Germany',
-      city: 'Berlin',
-      hotel: 'Hostel Friendship',
-    },
-    {
-      country: 'Indonesia',
-      city: 'Bali',
-      hotel: 'Ubud Bali Resort&SPA',
-    },
-    {
-      country: 'Netherlands',
-      city: 'Rotterdam',
-      hotel: 'King Kong Hostel',
-    },
-    {
-      country: 'Marocco',
-      city: 'Ourika',
-      hotel: 'Rokoko Hotel',
-    },
-    {
-      country: 'Germany',
-      city: 'Berlin',
-      hotel: 'Hotel Rehberge Berlin Mitte',
-    },
-  ];
+  {
+    country: 'Russia',
+    city: 'Saint Petersburg',
+    hotel: 'Hotel Leopold',
+  },
+  {
+    country: 'Spain',
+    city: 'Santa Cruz de Tenerife',
+    hotel: 'Apartment Sunshine',
+  },
+  {
+    country: 'Slowakia',
+    city: 'Vysokie Tatry',
+    hotel: 'Villa Kunerad',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hostel Friendship',
+  },
+  {
+    country: 'Indonesia',
+    city: 'Bali',
+    hotel: 'Ubud Bali Resort&SPA',
+  },
+  {
+    country: 'Netherlands',
+    city: 'Rotterdam',
+    hotel: 'King Kong Hostel',
+  },
+  {
+    country: 'Marocco',
+    city: 'Ourika',
+    hotel: 'Rokoko Hotel',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hotel Rehberge Berlin Mitte',
+  },
+];
 
-  const seachItem = (str) => {
-      for (let i=0; i<data.length; i++) {
-    if ((data[i].country === str)||(data[i].city === str)||(data[i].hotel === str)) {
-        return `${data[i].country} ${data[i].city} ${data[i].hotel}`;
-          }
-      }
+const seachItem = (str) => {
+  for (let i = 0; i < data.length; i++) {
+    if ((data[i].country === str) || (data[i].city === str) || (data[i].hotel === str)) {
+      return `${data[i].country} ${data[i].city} ${data[i].hotel}`;
+    }
   }
-  console.log(seachItem('Germany'));
+};
+console.log(seachItem('Germany'));
 
-  
-//lesson-6: Task1.1
+// lesson-6: Task1.1
 
 const palindrome2 = (word) => {
   if (word === word.split('').reverse().join('')) {
-      return true;
+    return true;
   }
   return false;
-}
+};
+console.log(palindrome2('шалаш'));
 
-//lesson-6: Task1.2
+// lesson-6: Task1.2
 const hotels2 = [
   {
     name: 'Hotel Leopold',
@@ -329,15 +329,15 @@ const seachString2 = (str) => {
     if (str2.includes(str)) {
       arr2.push(str2);
     }
-  })
+  });
   return arr2;
-}
+};
 
 console.log(seachString2('USA'));
 
-//lesson-6: Task1.3
+// lesson-6: Task1.3
 
-//НЕ РАБОТАЕТ, подскажи, пожалуйста, как сделать, чтобы заработало
+// НЕ РАБОТАЕТ, подскажи, пожалуйста, как сделать, чтобы заработало
 
 // const seachString2 = arrNew.map((item) => {
 //   const result = {};
@@ -354,7 +354,7 @@ console.log(seachString2('USA'));
 
 // console.log(seachString2(hotels2));
 
-//lesson-7: Task1.1
+// lesson-7: Task1.1
 const obj1 = {
   a: 'a',
   b: {
@@ -395,29 +395,26 @@ const deepEqual = (object1, object2) => {
   }
   const prop1 = Object.getOwnPropertyNames(object1);
   const prop2 = Object.getOwnPropertyNames(object2);
-  if (prop1.length != prop2.length) {
-      return false;
+  if (prop1.length !== prop2.length) {
+    return false;
   }
   for (let i = 0; i < prop1.length; i++) {
-    let item = prop1[i]; //название свойства
-    if (typeof(object1[item]) === 'object' && typeof(object2[item])=== 'object') {
-      if (!deepEqual(object1[item], object2[item])){
+    const item = prop1[i]; // название свойства
+    if (typeof (object1[item]) === 'object' && typeof (object2[item]) === 'object') {
+      if (!deepEqual(object1[item], object2[item])) {
         return false;
       }
-    }   
-      else {
-        if ((object1[item] !== object2[item])){
-          return false;
-      }
+    } else if ((object1[item] !== object2[item])) {
+      return false;
     }
   }
   return true;
 };
 console.log(deepEqual(obj1, obj2)); // true
 console.log(deepEqual(obj1, obj3));
-console.log(deepEqual({}, {})); 
+console.log(deepEqual({}, {}));
 
-//lesson-8: Task1.1
+// lesson-8: Task1.1
 const studentsData = [
   {
     firstName: 'Василий',
@@ -442,17 +439,18 @@ const studentsData = [
     lastName: 'Петров',
     admissionYear: 2019,
     courseName: 'Android',
-  }
+  },
 ];
 
-class User { 
-  constructor(params) { 
-    this.firstName = params.firstName;  
-    this.lastName = params.lastName; 
-  } 
-  get fullName  () { 
-    return `${this.firstName} ${this.lastName}`; 
-  } 
+class User {
+  constructor(params) {
+    this.firstName = params.firstName;
+    this.lastName = params.lastName;
+  }
+
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }
 
 class Student extends User {
@@ -461,8 +459,9 @@ class Student extends User {
     this.admissionYear = params.admissionYear;
     this.courseName = params.courseName;
   }
-  get course () {
-    return new Date().getFullYear() - this.admissionYear -1;
+
+  get course() {
+    return new Date().getFullYear() - this.admissionYear - 1;
   }
 }
 
@@ -470,52 +469,49 @@ class Students {
   constructor(studentsData) {
     this.students = studentsData;
   }
-  getInfo(){
-    return this.students.sort((student1, student2) =>
-     new Student(student1).course - new Student(student2).course).map(student => `${new User(student).fullName} - ${new Student(student).courseName} - ${new Student(student).course} курс` )
+
+  getInfo() {
+    return this.students.sort((student1, student2) => new Student(student1).course - new Student(student2).course).map((student) => `${new User(student).fullName} - ${new Student(student).courseName} - ${new Student(student).course} курс`);
   }
 }
 const students = new Students(studentsData);
 console.log(students.getInfo());
 
-////lesson-9: Task1.1
+/// /lesson-9: Task1.1
 
-let colors = {
-  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue']
-}
+const colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+};
 
-colors[Symbol.iterator] = function() {
+colors[Symbol.iterator] = function () {
   let index = 0;
-  let data = this.data;
-  let last = this.data.length 
+  const { data } = this;
+  const last = this.data.length;
   return {
     next() {
       if (index < last) {
         return {
           done: false,
-          value: data[index++]
-        };
-      } else {
-        index = 0;
-        return {
-          done: true,
-          value: data[index++]
+          value: data[index++],
         };
       }
-    }
+      index = 0;
+      return {
+        done: true,
+        value: data[index++],
+      };
+    },
 
-  }
+  };
 };
-  
-const changeColorP = (item) => { 
-  return (e) => { 
-      e.target.style.color = item.next().value;
-  } 
-} 
 
-const p = document.querySelectorAll('p'); 
+const changeColorP = (item) => (e) => {
+  e.target.style.color = item.next().value;
+};
 
-p.forEach((item) => { 
-  let iter = colors[Symbol.iterator]();
-  item.addEventListener('click', changeColorP(iter)); 
+const p = document.querySelectorAll('p');
+
+p.forEach((item) => {
+  const iter = colors[Symbol.iterator]();
+  item.addEventListener('click', changeColorP(iter));
 });
