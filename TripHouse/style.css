@@ -54,3 +54,220 @@
   display: flex;
   justify-content:space-around;
   }
+
+  .wrapper__header {
+    height: 100vh;
+    background: url(./images/castelmezzano.jpg) no-repeat;
+    max-width: 1440px;
+    margin: 0px auto;
+  }
+  .wrapper__header_mobile {
+    display: none;
+  }
+  .wrapper__header_navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 51px 104px 0 104px;
+  }
+  .wrapper__header_text {
+    margin: 80px auto auto 104px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-size: 50px;
+  }
+  .wrapper__header_list_item {
+    color: #FFFFFF;
+    font-size: 24px;
+    margin-left: 20px;
+    display: inline;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+  }
+  .wrapper__header_list_item a {
+    color: #FFFFFF;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+  }
+  .wrapper__header_download_items {
+    text-align: center;
+    margin: 300px auto;
+  }
+  
+  .header__attractions {
+    text-decoration: none;
+    position: relative;
+  }
+  .header__attractions:hover::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #f5bd41;
+    top: 38px;
+    left: 0px;
+  }
+  .header__stays {
+    position: relative;
+    text-decoration: none;
+  }
+  .header__stays::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #f5bd41;
+    top: 38px;
+    left: 0px;
+  }
+  
+  .form__search_labels {
+    display: flex;
+    color: #FFFFFF;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+  }
+  .form__label_1 {
+    margin: 100px 83px 24px 128px;
+  }
+  .form__label_2 {
+    margin: 100px 220px 24px 0px;
+  }
+  .form__search_desctop {
+    display: flex;
+    justify-content: space-between;
+  }
+  .form__search_desctop label {
+    color: #FFFFFF;
+  }
+  .form__search_desctop input {
+    height: 64px;
+    width: 100%;
+  }
+  .form__search_desctop button {
+    min-width: 200px;
+    height: 64px;
+    background: #3077C6;
+    color: #FFFFFF;
+    border-radius: 10px;
+    margin-left: -10px;
+  }
+  .form__search_1 {
+    margin-left: 104px;
+    flex-grow: 2;
+  }
+  .form__search_2 {
+    margin-top: 18px;
+    flex-grow: 2;
+  }
+  .form__search_3 {
+    margin-top: 18px;
+    flex-grow: 2;
+  }
+  .form__search_3_input {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    color: #383838;
+  }
+  .form__search_4 {
+    margin-top: 18px;
+    flex-grow: 3;
+  }
+  .form__mobile {
+    display: none;
+  }
+  .form__people {
+    display: none;
+    background-color: #FFFFFF;
+    width: 259px;
+    border-radius: 8px;
+    margin-top: 12px;
+    margin-left: 755px;
+  }
+
+  .showed{
+    display: block;
+    position: absolute;
+  }
+  
+  .form__people_item{
+    align-items: center;
+    display: flex;
+    padding-top: 16px;
+    padding-left: 22px;
+    justify-content: space-between;
+  }
+  .form__people_item span{
+    color: #333333;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  .form__people_1_buttons{
+    align-items: center;
+    display: flex;
+    padding-right: 22px;
+  }
+  .form__people_2_buttons{
+    align-items: center;
+    display: flex;
+    padding-right: 22px;
+  }
+  .form__people_3_buttons{
+    align-items: center;
+    display: flex;
+    padding-right: 22px;
+  }
+  .form__people_1_buttons span{
+    padding-right: 20px;
+    padding-left: 19px;
+  }
+  .form__people_2_buttons span{
+    padding-right: 20px;
+    padding-left: 19px;
+  }
+  .form__people_3_buttons span{
+    padding-right: 20px;
+    padding-left: 19px;
+  }
+
+  .form_children_question{
+    display: none;
+  }
+
+  .form_children_question span{
+    display: block;
+    color: #333333;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .form_children_question select {
+    padding: 8px;
+    border: 1px solid #3077C6;
+    display: block;
+    margin-bottom: 22px;
+  }
+
+  .form__people_item button{
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: #3077C6;
+    width: 30px;
+    height: 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #3077C6;
+  }
