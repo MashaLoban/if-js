@@ -11,7 +11,6 @@ return data
   const divEl = document.querySelector(".wrapper__item_home");
 
 async function createHotels(){
-  let data = await getHotels(url);
   data.forEach(element => {
 
     const div = document.createElement("div");
