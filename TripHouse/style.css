@@ -54,3 +54,7 @@
   display: flex;
   justify-content:space-around;
   }
+  .wrapper__item_home img{
+  width: 296px;
+  height: 296px;
+  }
