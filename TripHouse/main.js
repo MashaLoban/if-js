@@ -1,5 +1,28 @@
 const url = 'https://fe-student-api.herokuapp.com/api/hotels/popular';
 const divEl = document.querySelector('.wrapper__item_home');
+const formSendEl = document.querySelector('.form_send_file');
+
+formSendEl.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const fetchOption = {
+    method: 'POST',
+    body: new FormData(formSendEl),
+  };
+
+  const res = await fetch('https://fe-student-api.herokuapp.com/api/file', fetchOption)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      return response.json();
+    })
+    .then((result) => result)
+    .catch((error) => console.log(error.message));
+
+  console.log(res);
+});
 
 async function getHotels(url) {
   const sessionStorageHotels = sessionStorage.getItem('data');
