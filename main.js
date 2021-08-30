@@ -515,3 +515,27 @@ p.forEach((item) => {
   const iter = colors[Symbol.iterator]();
   item.addEventListener('click', changeColorP(iter));
 });
+
+// lesson-14
+const formSendEl = document.querySelector('.form_send_file');
+
+formSendEl.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const fetchOption = {
+    method: 'POST',
+    body: new FormData(formSendEl),
+  };
+
+  const res = await fetch('https://fe-student-api.herokuapp.com/api/file', fetchOption)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then((result) => result)
+    .catch((error) => console.log(error.message));
+
+  console.log(res);
+});
