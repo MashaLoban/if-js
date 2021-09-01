@@ -81,12 +81,15 @@ data.forEach((element) => {
 //   </div>`
 // });
 const inputSearchFocus = document.querySelector('.form__search_3_input');
-const adultsValue = document.querySelector('.form__people_1_buttons span');
-const childrensValue = document.querySelector('.form__people_2_buttons span');
-const roomsValue = document.querySelector('.form__people_3_buttons span');
+
+const countAdultsEl = document.querySelector('.form__people_1_count');
+const countChildrenEl = document.querySelector('.form__people_2_count');
+const countRoomsEl = document.querySelector('.form__people_3_count');
+
 const inputPeopleForm = document.querySelector('.form__search_3_input');
 const formChildrenAge = document.querySelector('.form_children_question');
 // const ageChildrenSelect = document.querySelector('.ageChildrenForm');
+
 
 const buttonMinus1 = document.querySelector('.form_people_minus1');
 const buttonMinus2 = document.querySelector('.form_people_minus2');
@@ -96,93 +99,78 @@ const buttonPlus1 = document.querySelector('.form_people_plus1');
 const buttonPlus2 = document.querySelector('.form_people_plus2');
 const buttonPlus3 = document.querySelector('.form_people_plus3');
 
-adultsValue.textContent = 1;
-childrensValue.textContent = 0;
-roomsValue.textContent = 1;
-inputPeopleForm.value = `${adultsValue.textContent} Adults - ${childrensValue.textContent} Children - ${roomsValue.textContent} Room`;
+countAdultsEl.textContent = 1;
+countChildrenEl.textContent = 0;
+countRoomsEl.textContent = 1;
+inputPeopleForm.value = `${countAdultsEl.textContent} Adults - ${countChildrenEl.textContent} Children - ${countRoomsEl.textContent} Room`;
 
 const showFormPeople = () => {
   formPeopleEl.classList.toggle('showed');
 };
 
-const createAdultsPlus = (e) => {
-  e.preventDefault();
-  if (adultsValue.textContent < 31) {
-    const count = Number(adultsValue.textContent);
-    adultsValue.textContent = count + 1;
-  }
-};
-const createChildrensPlus = (e) => {
-  e.preventDefault();
-  if (childrensValue.textContent >= 0) {
-    formChildrenAge.style.display = 'block';
-  }
-  // let newSelectAge = ageChildrenSelect.cloneNode(true);
-  // newSelectAge.after(ageChildrenSelect);
-  if (childrensValue.textContent < 11) {
-    const count = Number(childrensValue.textContent);
-    childrensValue.textContent = count + 1;
-  }
-// const newSelectAge = document.querySelector('.ageChildrenForm').cloneNode(true);
-// newSelectAge.after('.ageChildrenSelect');
-};
+// const stopDefaultAct = (e) => {
+//   debugger;
+//   e.preventDefault();
+// }
 
-const createRoomsPlus = (e) => {
-  e.preventDefault();
-  if (roomsValue.textContent < 31) {
-    const count = Number(roomsValue.textContent);
-    roomsValue.textContent = count + 1;
-  }
-};
+const countFunc = () => {
+  let count = 0;
 
-const createAdultsMinus = (e) => {
-  e.preventDefault();
-  if (adultsValue.textContent > 0) {
-    const count = Number(adultsValue.textContent);
-    adultsValue.textContent = count - 1;
-  }
-};
-
-const createChildrensMinus = (e) => {
-  e.preventDefault();
-  if (childrensValue.textContent < 2) {
-    formChildrenAge.style.display = 'none';
-  }
-  if (childrensValue.textContent > 0) {
-    const count = Number(childrensValue.textContent);
-    childrensValue.textContent = count - 1;
+// debugger;
+return (button) => {      
+if (button === 'minus1') {
+  if   (count > 0) {
+    count -= 1; 
+    }  
+    countAdultsEl.textContent = count;
+  } else if (button === 'plus1') {
+    if   (count < 30) {
+      count +=1; 
+    }
+      countAdultsEl.textContent = count;
+    } else if (button === 'minus2') {
+      if   (count > 0) {
+      count -=1;
+      }
+      countChildrenEl.textContent = count; 
+    } else if (button === 'plus2') {
+      if   (count < 10) {
+      count +=1; 
+      }
+      countChildrenEl.textContent = count;
+    } else if (button === 'minus3') {
+      if   (count > 0) {
+      count -=1;
+      }
+      countRoomsEl.textContent = count; 
+    } else if (button === 'plus3') {
+      if   (count < 30) {
+      count +=1; 
+      }
+      countRoomsEl.textContent = count;
+    }
   }
 };
 
-const createRoomsMinus = (e) => {
-  e.preventDefault();
-  if (roomsValue.textContent > 0) {
-    const count = Number(roomsValue.textContent);
-    roomsValue.textContent = count - 1;
-  }
-};
+
+const count1 = countFunc();
+const count2 = countFunc();
+const count3 = countFunc();
 
 const updateFormPeople = () => {
-  inputPeopleForm.value = `${adultsValue.textContent} Adults - ${childrensValue.textContent} Children - ${roomsValue.textContent} Room`;
+  inputPeopleForm.value = `${countAdultsEl.textContent} Adults - ${countChildrenEl.textContent} Children - ${countRoomsEl.textContent} Room`;
 };
 
-// const showFormChildrenAge = () => {
-
-// };
-
-// const showFormChildrenAge = () =>{
-//   formChildrenAge.classList.toggle('showed');
-// }
 
 inputSearchFocus.addEventListener('click', showFormPeople);
 // обработкики увеличения/уменьшения кнопок
-buttonPlus1.addEventListener('click', createAdultsPlus);
-buttonPlus2.addEventListener('click', createChildrensPlus);
-buttonPlus3.addEventListener('click', createRoomsPlus);
+buttonPlus1.addEventListener('click', () => count1('plus1'));
+buttonPlus2.addEventListener('click', () => count2('plus2'));
+buttonPlus3.addEventListener('click', () => count3('plus3'));
 
-buttonMinus1.addEventListener('click', createAdultsMinus);
-buttonMinus2.addEventListener('click', createChildrensMinus);
-buttonMinus3.addEventListener('click', createRoomsMinus);
+buttonMinus1.addEventListener('click', () => count1('minus1'));
+buttonMinus2.addEventListener('click', () => count2('minus2'));
+buttonMinus3.addEventListener('click', () => count3('minus3'));
 // обработчики обновления формы
 buttonPlus1.addEventListener('click', updateFormPeople);
 buttonPlus2.addEventListener('click', updateFormPeople);
