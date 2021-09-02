@@ -90,7 +90,6 @@ const inputPeopleForm = document.querySelector('.form__search_3_input');
 const formChildrenAge = document.querySelector('.form_children_question');
 // const ageChildrenSelect = document.querySelector('.ageChildrenForm');
 
-
 const buttonMinus1 = document.querySelector('.form_people_minus1');
 const buttonMinus2 = document.querySelector('.form_people_minus2');
 const buttonMinus3 = document.querySelector('.form_people_minus3');
@@ -108,59 +107,107 @@ const showFormPeople = () => {
   formPeopleEl.classList.toggle('showed');
 };
 
-// const stopDefaultAct = (e) => {
-//   debugger;
-//   e.preventDefault();
-// }
-
 const countFunc = () => {
   let count = 0;
 
-// debugger;
-return (button) => {      
-if (button === 'minus1') {
-  if   (count > 0) {
-    count -= 1; 
-    }  
-    countAdultsEl.textContent = count;
-  } else if (button === 'plus1') {
-    if   (count < 30) {
-      count +=1; 
-    }
+  // debugger;
+  return (button) => {
+    if (button === 'minus1') {
+      if (count > 0) {
+        count -= 1;
+      }
+      if (count === 0) {
+        buttonMinus1.style.border = '1px solid #CECECE';
+        buttonMinus1.style.color = '#CECECE';
+      }
+      if (count <= 30) {
+        buttonPlus1.style.border = '1px solid #3077C6';
+        buttonPlus1.style.color = '#3077C6';
+      }
+      countAdultsEl.textContent = count;
+    } else if (button === 'plus1') {
+      if (count >= 29) {
+        buttonPlus1.style.border = '1px solid #CECECE';
+        buttonPlus1.style.color = '#CECECE';
+      }
+      if (count < 30) {
+        buttonMinus1.style.border = '1px solid #3077C6';
+        buttonMinus1.style.color = '#3077C6';
+        count += 1;
+      }
       countAdultsEl.textContent = count;
     } else if (button === 'minus2') {
-      if   (count > 0) {
-      count -=1;
+      if (count <= 1) {
+        formChildrenAge.style.display = 'none';
+        buttonMinus2.style.border = '1px solid #CECECE';
+        buttonMinus2.style.color = '#CECECE';
       }
-      countChildrenEl.textContent = count; 
+      if (count > 0) {
+        count -= 1;
+      }
+      if (count <= 30) {
+        buttonPlus2.style.border = '1px solid #3077C6';
+        buttonPlus2.style.color = '#3077C6';
+      }
+      if (count >= 1) {
+        const newSelectAge = document.querySelector('.ageChildrenForm');
+        newSelectAge.remove();
+      }
+      countChildrenEl.textContent = count;
     } else if (button === 'plus2') {
-      if   (count < 10) {
-      count +=1; 
+      if (count >= 0) {
+        formChildrenAge.style.display = 'block';
+      }
+      if (count > 0) {
+        const newSelectAge = document.querySelector('.ageChildrenForm').cloneNode(true);
+        document.querySelector('.ageChildrenForm').after(newSelectAge);
+      }
+      if (count >= 9) {
+        buttonPlus2.style.border = '1px solid #CECECE';
+        buttonPlus2.style.color = '#CECECE';
+      }
+      if (count < 10) {
+        buttonMinus2.style.border = '1px solid #3077C6';
+        buttonMinus2.style.color = '#3077C6';
+        count += 1;
       }
       countChildrenEl.textContent = count;
     } else if (button === 'minus3') {
-      if   (count > 0) {
-      count -=1;
+      if (count > 0) {
+        count -= 1;
       }
-      countRoomsEl.textContent = count; 
+      if (count === 0) {
+        buttonMinus3.style.border = '1px solid #CECECE';
+        buttonMinus3.style.color = '#CECECE';
+      }
+      if (count <= 30) {
+        buttonPlus3.style.border = '1px solid #3077C6';
+        buttonPlus3.style.color = '#3077C6';
+      }
+      countRoomsEl.textContent = count;
     } else if (button === 'plus3') {
-      if   (count < 30) {
-      count +=1; 
+      if (count >= 29) {
+        buttonPlus3.style.border = '1px solid #CECECE';
+        buttonPlus3.style.color = '#CECECE';
+      }
+      if (count < 30) {
+        buttonMinus3.style.border = '1px solid #3077C6';
+        buttonMinus3.style.color = '#3077C6';
+        count += 1;
       }
       countRoomsEl.textContent = count;
     }
-  }
+  };
 };
-
 
 const count1 = countFunc();
 const count2 = countFunc();
 const count3 = countFunc();
 
-const updateFormPeople = () => {
+const updateFormPeople = (e) => {
+  e.preventDefault();
   inputPeopleForm.value = `${countAdultsEl.textContent} Adults - ${countChildrenEl.textContent} Children - ${countRoomsEl.textContent} Room`;
 };
-
 
 inputSearchFocus.addEventListener('click', showFormPeople);
 // обработкики увеличения/уменьшения кнопок
