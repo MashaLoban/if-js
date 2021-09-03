@@ -1,85 +1,41 @@
-const data = [
-  {
-    name: 'Hotel Leopold',
-    city: 'Saint Petersburg',
-    country: 'Russia',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-leopold_mflelk.jpg',
-  },
-  {
-    name: 'Apartment Sunshine',
-    city: 'Santa  Cruz de Tenerife',
-    country: 'Spain',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/apartment-sunshine_vhdlel.jpg',
-  },
-  {
-    name: 'Villa Kunerad',
-    city: 'Vysokie Tatry',
-    country: 'Slowakia',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/villa-kunerad_gdbqgv.jpg',
-  },
-  {
-    name: 'Hostel Friendship',
-    city: 'Berlin',
-    country: 'Germany',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/hostel-friendship_aw6tn7.jpg',
-  },
-  {
-    name: 'Radisson Blu Hotel',
-    city: 'Kyiv',
-    country: 'Ukraine',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/radisson-blu-hotel_jwtowg.jpg',
-  },
-  {
-    name: 'Paradise Hotel',
-    city: 'Guadalupe',
-    country: 'Mexico',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/paradise-hotel_i6whae.jpg',
-  },
-  {
-    name: 'Hotel Grindewald',
-    city: 'Interlaken',
-    country: 'Switzerland',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-grindewald_zsjsmy.jpg',
-  },
-  {
-    name: 'The Andaman Resort',
-    city: 'Port Dickson',
-    country: 'Malaysia',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/the-andaman-resort_d2xksj.jpg',
-  },
-];
-
-const formPeopleEl = document.querySelector('.form__people');
+const url = 'https://fe-student-api.herokuapp.com/api/hotels/popular';
 const divEl = document.querySelector('.wrapper__item_home');
+const formPeopleEl = document.querySelector('.form__people');
 
-data.forEach((element) => {
-  const div = document.createElement('div');
+async function getHotels(url) {
+  const sessionStorageHotels = sessionStorage.getItem('data');
+  if (!sessionStorageHotels) {
+    const data = await fetch(url)
+      .then((response) => response.json())
+      .then((data) => data)
+      .catch((err) => console.log(err));
+    sessionStorage.setItem('data', JSON.stringify(data));
+    return data;
+  }
+  const data = JSON.parse(sessionStorageHotels);
+  return data;
+}
 
-  const img = document.createElement('img');
-  img.setAttribute('src', element.imageUrl);
+async function createHotels() {
+  const data = await getHotels(url);
+  data.forEach((element) => {
+    const div = document.createElement('div');
+    const img = document.createElement('img');
+    img.setAttribute('src', element.imageUrl);
+    const a = document.createElement('a');
+    a.innerHTML = `${element.name}`;
+    a.href = '#';
+    a.setAttribute('src', `#${element.name}`);
+    const paragraph = document.createElement('p');
+    paragraph.innerHTML = `${element.country}, ${element.city}`;
+    div.appendChild(img);
+    div.appendChild(a);
+    div.appendChild(paragraph);
+    divEl.appendChild(div);
+  });
+}
+createHotels();
 
-  const a = document.createElement('a');
-  a.textContent = `${element.name}`;
-  a.href = '#';
-  a.setAttribute('src', `#${element.name}`);
-
-  const paragraph = document.createElement('p');
-  paragraph.textContent = `${element.country}, ${element.city}`;
-
-  div.appendChild(img);
-  div.appendChild(a);
-  div.appendChild(paragraph);
-  divEl.appendChild(div);
-});
-
-// data.forEach(element => {
-//   divEl.textContent +=
-//   `<div>
-//   <img src=${element.imageUrl} alt=${element.name}/>
-//   <a href="#">${element.name}</a>
-//   <p>${element.country}, ${element.city}</p>
-//   </div>`
-// });
 const inputSearchFocus = document.querySelector('.form__search_3_input');
 
 const countAdultsEl = document.querySelector('.form__people_1_count');
