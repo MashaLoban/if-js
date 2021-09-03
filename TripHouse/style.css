@@ -266,9 +266,37 @@
     font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: normal;
-    color: #3077C6;
     width: 30px;
     height: 30px;
     background-color: #FFFFFF;
+  }
+
+  .form_people_minus1{
+    border: 1px solid #CECECE;
+    color: #CECECE;
+  }
+
+  .form_people_minus2{
+    border: 1px solid #CECECE;
+    color: #CECECE;
+  }
+
+  .form_people_minus3{
+    border: 1px solid #CECECE;
+    color: #CECECE;
+  }
+
+  .form_people_plus1{
     border: 1px solid #3077C6;
+    color: #3077C6;
+  }
+
+  .form_people_plus2{
+    border: 1px solid #3077C6;
+    color: #3077C6;
+  }
+  
+  .form_people_plus3{
+    border: 1px solid #3077C6;
+    color: #3077C6;
   }
