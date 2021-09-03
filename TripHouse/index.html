@@ -10,6 +10,163 @@
     <title>TripHouse</title>
 </head>
 <body>
+    <header>
+        <div class="wrapper__header">
+            <div class="wrapper__header_navigation">
+                <img src="./images/logo_vector.svg" alt="Logo"/>                                                        
+                <ul>
+                    <li class="wrapper__header_list_item">
+                        <a class="header__stays" href="#">Stays</a>
+                    </li>
+                     <li class="wrapper__header_list_item">
+                         <a class="header__attractions" href="#">Attractions</a>
+                     </li>
+                    <li class="wrapper__header_list_item"><img src="./images/Night.svg" alt="Night"/></li>
+                    <li class="wrapper__header_list_item"><img src="./images/AccountCircle.svg" alt="Account"/></li>
+                </ul>
+            </div>
+            <div class="wrapper__header_text"><p>Discover stays </p><p>to live, work or just relax</p></div>
+            <form>
+                <div class="form__search_labels"> 
+                    <label class="form__label_1" for="search">Your destination or hotel name</label>
+                    <label class="form__label_2" for="date">Check-in — Check-out</label>
+
+                </div>
+                <div class="form__search_desctop">
+                    <div class="form__search_1">><p>
+                            <!-- <label for="search">Your destination or hotel name</label> -->
+                        </p>
+                        <input id="search" type="text" name="search" placeholder="New York"/>
+                    </div>
+                    <div class="form__search_2">
+                        <p>   
+                            <!-- <label for="date">Check-in — Check-out</label> -->
+                        </p> 
+                        <input id="date" type="date" name="date"/>
+                    </div>
+                    <!-- <label for="date">Check-in — Check-out</label> -->
+                    <div class="form__search_3">
+                        <input class="form__search_3_input" id="people" type="text" name="people" placeholder="People"/>
+                    </div>
+                    <div class="form__search_4">
+                        <button>Search</button>
+                    </div>
+                </div>
+                <div class="form__people">
+                    <div class="form__people_item">
+                        <span class="form__people_1">Adults</span>
+                        <div class= "form__people_1_buttons">
+                            <button class="form_people_minus1">-</button>
+                            <span class= "form__people_1_count">0</span>
+                            <button class="form_people_plus1">+</button>
+                        </div> 
+                    </div>
+                    <div class="form__people_item">
+                        <span class="form__people_2">Children</span>
+                        <div class= "form__people_2_buttons">
+                            <button class="form_people_minus2">-</button>
+                            <span class= "form__people_2_count">0</span>
+                            <button class="form_people_plus2">+</button>
+                        </div> 
+                    </div>
+                    <div class="form__people_item">
+                        <span class="form__people_3">Rooms</span>
+                        <div class= "form__people_3_buttons">
+                            <button class="form_people_minus3">-</button> 
+                            <span class= "form__people_3_count">0</span>
+                            <button class="form_people_plus3">+</button>
+                        </div> 
+                    </div>
+                    <div class="form__people_item">
+                        <div class="form_children_question">
+                            <span>What is the age of the child you’re travelling with?</span>
+                            <select class = "ageChildrenForm">
+                                <option>1 years old</option>
+                                <option>2 years old</option>
+                                <option>3 years old</option>
+                                <option>4 years old</option>
+                                <option>5 years old</option>
+                                <option>6 years old</option>
+                                <option>7 years old</option>
+                                <option>8 years old</option>
+                                <option>9 years old</option>
+                                <option>10 years old</option>
+                                <option>11 years old</option>
+                                <option>12 years old</option>
+                                <option>13 years old</option>
+                                <option>14 years old</option>
+                                <option>15 years old</option>
+                                <option>16 years old</option>
+                                <option>17 years old</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+            <div class="wrapper__header_download_items">
+                <img src="./images/Download_google_play.svg" alt="Logo_GP"/>
+                <img src="./images/Download_App_Store.svg" alt="Logo_APPLE"/>
+            </div>
+        </div>              
+        <div class="wrapper__header_mobile">
+            <div class="wrapper__header_navigation_mobile">
+                <div class="wrapper__header_logo_mobile">
+                    <img src="./images/logo_vector_mobile.svg" alt="Logo"/>
+                </div>
+                <ul class="wrapper__header_list_mobile">
+                    <li class="wrapper__header_list_item_mobile"><img src="./images/Night_mobile.svg" alt="Night"/></li>
+                    <li class="wrapper__header_list_item_mobile"><img src="./images/AccountCircle_mobile.svg" alt="Account"/></li>
+                    <li class="wrapper__header_list_item_mobile"><img src="./images/menu.svg"></li>
+                </ul>
+            </div>
+            <div class="wrapper__header_text_mobile"><p>Discover stays </p><p>to live, work or just relax</p></div>
+            <form class="form__mobile">
+                <div class="first">
+                    <label for="text"></label>
+                    <input type="text" placeholder="Your destination or hotel name" />
+                </div>
+                <div class="second">
+                    <div>
+                      <label for="date">Check-in date</label>
+                      <input
+                        type="date"
+                        placeholder="Tue 15 Sept 2020"
+                        value="2021-09-15"
+                      />
+                    </div>
+                    <div>
+                      <label for="date">Check-out date</label>
+                      <input
+                        type="date"
+                        placeholder="Sat 19 Sept 2020"
+                        value="2021-09-15"
+                      />
+                    </div>
+                  </div>
+                  <div class="third">
+                    <div>
+                      <label for="number">Adults</label>
+                      <input type="number" value="0" />
+                    </div>
+                    <div>
+                      <label for="number">Children</label>
+                      <input type="number" value="0" />
+                    </div>
+                    <div>
+                      <label for="number">Rooms</label>
+                      <input type="number" value="0" />
+                    </div>
+                  </div>
+                  <button>Submit</button>
+            </form>
+            <div class="wrapper__header_download_items_mobile">
+                <img src="./images/google-play_mobile.svg" alt="Logo_GP"/>
+                <img src="./images/Download_App_Store_mobile.svg" alt="Logo_APPLE"/>
+            </div>
+        </div>
+    </header>
     <div class="wrapper_homes">
         <p>Homes guests loves</p>
         <div class="wrapper__items_home">
