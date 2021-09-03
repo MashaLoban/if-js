@@ -98,9 +98,11 @@ const buttonPlus1 = document.querySelector('.form_people_plus1');
 const buttonPlus2 = document.querySelector('.form_people_plus2');
 const buttonPlus3 = document.querySelector('.form_people_plus3');
 
-countAdultsEl.textContent = 1;
-countChildrenEl.textContent = 0;
-countRoomsEl.textContent = 1;
+const colorActiv = '#3077C6';
+const colorDesabled = '#CECECE';
+const borderActiv = '1px solid #3077C6';
+const borderDesabled = '1px solid #CECECE';
+
 inputPeopleForm.value = `${countAdultsEl.textContent} Adults - ${countChildrenEl.textContent} Children - ${countRoomsEl.textContent} Room`;
 
 const showFormPeople = () => {
@@ -117,37 +119,37 @@ const countFunc = () => {
         count -= 1;
       }
       if (count === 0) {
-        buttonMinus1.style.border = '1px solid #CECECE';
-        buttonMinus1.style.color = '#CECECE';
+        buttonMinus1.style.border = borderDesabled;
+        buttonMinus1.style.color = colorDesabled;
       }
       if (count <= 30) {
-        buttonPlus1.style.border = '1px solid #3077C6';
-        buttonPlus1.style.color = '#3077C6';
+        buttonPlus1.style.border = borderActiv;
+        buttonPlus1.style.color = colorActiv;
       }
       countAdultsEl.textContent = count;
     } else if (button === 'plus1') {
       if (count >= 29) {
-        buttonPlus1.style.border = '1px solid #CECECE';
-        buttonPlus1.style.color = '#CECECE';
+        buttonPlus1.style.border = borderDesabled;
+        buttonPlus1.style.color = colorDesabled;
       }
       if (count < 30) {
-        buttonMinus1.style.border = '1px solid #3077C6';
-        buttonMinus1.style.color = '#3077C6';
+        buttonMinus1.style.border = borderActiv;
+        buttonMinus1.style.color = colorActiv;
         count += 1;
       }
       countAdultsEl.textContent = count;
     } else if (button === 'minus2') {
       if (count <= 1) {
         formChildrenAge.style.display = 'none';
-        buttonMinus2.style.border = '1px solid #CECECE';
-        buttonMinus2.style.color = '#CECECE';
+        buttonMinus2.style.border = borderDesabled;
+        buttonMinus2.style.color = colorDesabled;
       }
       if (count > 0) {
         count -= 1;
       }
       if (count <= 30) {
-        buttonPlus2.style.border = '1px solid #3077C6';
-        buttonPlus2.style.color = '#3077C6';
+        buttonPlus2.style.border = borderActiv;
+        buttonPlus2.style.color = colorActiv;
       }
       if (count >= 1) {
         const newSelectAge = document.querySelector('.ageChildrenForm');
@@ -163,12 +165,12 @@ const countFunc = () => {
         document.querySelector('.ageChildrenForm').after(newSelectAge);
       }
       if (count >= 9) {
-        buttonPlus2.style.border = '1px solid #CECECE';
-        buttonPlus2.style.color = '#CECECE';
+        buttonPlus2.style.border = borderDesabled;
+        buttonPlus2.style.color = colorDesabled;
       }
       if (count < 10) {
-        buttonMinus2.style.border = '1px solid #3077C6';
-        buttonMinus2.style.color = '#3077C6';
+        buttonMinus2.style.border = borderActiv;
+        buttonMinus2.style.color = colorActiv;
         count += 1;
       }
       countChildrenEl.textContent = count;
@@ -177,22 +179,22 @@ const countFunc = () => {
         count -= 1;
       }
       if (count === 0) {
-        buttonMinus3.style.border = '1px solid #CECECE';
-        buttonMinus3.style.color = '#CECECE';
+        buttonMinus3.style.border = borderDesabled;
+        buttonMinus3.style.color = colorDesabled;
       }
       if (count <= 30) {
-        buttonPlus3.style.border = '1px solid #3077C6';
-        buttonPlus3.style.color = '#3077C6';
+        buttonPlus3.style.border = borderActiv;
+        buttonPlus3.style.color = colorActiv;
       }
       countRoomsEl.textContent = count;
     } else if (button === 'plus3') {
       if (count >= 29) {
-        buttonPlus3.style.border = '1px solid #CECECE';
-        buttonPlus3.style.color = '#CECECE';
+        buttonPlus3.style.border = borderDesabled;
+        buttonPlus3.style.color = colorDesabled;
       }
       if (count < 30) {
-        buttonMinus3.style.border = '1px solid #3077C6';
-        buttonMinus3.style.color = '#3077C6';
+        buttonMinus3.style.border = borderActiv;
+        buttonMinus3.style.color = colorActiv;
         count += 1;
       }
       countRoomsEl.textContent = count;
