@@ -1,4 +1,4 @@
-import { countFunc } from './modules/module1';
+import { countFunc } from './modules/module1.js';
 
 const url = 'https://fe-student-api.herokuapp.com/api/hotels/popular';
 const divEl = document.querySelector('.wrapper__item_home');

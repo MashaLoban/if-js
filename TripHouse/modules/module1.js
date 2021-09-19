@@ -1,5 +1,28 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-undef */
+const inputSearchFocus = document.querySelector('.form__search_3_input');
+
+const countAdultsEl = document.querySelector('.form__people_1_count');
+const countChildrenEl = document.querySelector('.form__people_2_count');
+const countRoomsEl = document.querySelector('.form__people_3_count');
+
+const inputPeopleForm = document.querySelector('.form__search_3_input');
+const formChildrenAge = document.querySelector('.form_children_question');
+// const ageChildrenSelect = document.querySelector('.ageChildrenForm');
+
+const buttonMinus1 = document.querySelector('.form_people_minus1');
+const buttonMinus2 = document.querySelector('.form_people_minus2');
+const buttonMinus3 = document.querySelector('.form_people_minus3');
+
+const buttonPlus1 = document.querySelector('.form_people_plus1');
+const buttonPlus2 = document.querySelector('.form_people_plus2');
+const buttonPlus3 = document.querySelector('.form_people_plus3');
+
+const colorActiv = '#3077C6';
+const colorDesabled = '#CECECE';
+const borderActiv = '1px solid #3077C6';
+const borderDesabled = '1px solid #CECECE';
+
 export const countFunc = (startCount) => {
   let count = startCount;
 
