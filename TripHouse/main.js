@@ -1,3 +1,5 @@
+import { countFunc } from './modules/module1.js';
+
 const url = 'https://fe-student-api.herokuapp.com/api/hotels/popular';
 const divEl = document.querySelector('.wrapper__item_home');
 const formPeopleEl = document.querySelector('.form__people');
@@ -6,9 +8,14 @@ async function getHotels(url) {
   const sessionStorageHotels = sessionStorage.getItem('data');
   if (!sessionStorageHotels) {
     const data = await fetch(url)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
       .then((data) => data)
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
     sessionStorage.setItem('data', JSON.stringify(data));
     return data;
   }
@@ -62,105 +69,31 @@ const borderDesabled = '1px solid #CECECE';
 inputPeopleForm.value = `${countAdultsEl.textContent} Adults - ${countChildrenEl.textContent} Children - ${countRoomsEl.textContent} Room`;
 
 const showFormPeople = () => {
+  // debugger;
   formPeopleEl.classList.toggle('showed');
 };
 
-const countFunc = () => {
-  let count = 0;
+// const filterParam = {
+//   adults: {
+//     min: 1,
+//     max: 30,
+//     default: 1,
+//   },
+//   children: {
+//     min: 0,
+//     max: 10,
+//     default: 0,
+//   },
+//   rooms: {
+//     min: 1,
+//     max: 30,
+//     default: 1
+//   }
+// }
 
-  // debugger;
-  return (button) => {
-    if (button === 'minus1') {
-      if (count > 0) {
-        count -= 1;
-      }
-      if (count === 0) {
-        buttonMinus1.style.border = borderDesabled;
-        buttonMinus1.style.color = colorDesabled;
-      }
-      if (count <= 30) {
-        buttonPlus1.style.border = borderActiv;
-        buttonPlus1.style.color = colorActiv;
-      }
-      countAdultsEl.textContent = count;
-    } else if (button === 'plus1') {
-      if (count >= 29) {
-        buttonPlus1.style.border = borderDesabled;
-        buttonPlus1.style.color = colorDesabled;
-      }
-      if (count < 30) {
-        buttonMinus1.style.border = borderActiv;
-        buttonMinus1.style.color = colorActiv;
-        count += 1;
-      }
-      countAdultsEl.textContent = count;
-    } else if (button === 'minus2') {
-      if (count <= 1) {
-        formChildrenAge.style.display = 'none';
-        buttonMinus2.style.border = borderDesabled;
-        buttonMinus2.style.color = colorDesabled;
-      }
-      if (count > 0) {
-        count -= 1;
-      }
-      if (count <= 30) {
-        buttonPlus2.style.border = borderActiv;
-        buttonPlus2.style.color = colorActiv;
-      }
-      if (count >= 1) {
-        const newSelectAge = document.querySelector('.ageChildrenForm');
-        newSelectAge.remove();
-      }
-      countChildrenEl.textContent = count;
-    } else if (button === 'plus2') {
-      if (count >= 0) {
-        formChildrenAge.style.display = 'block';
-      }
-      if (count > 0) {
-        const newSelectAge = document.querySelector('.ageChildrenForm').cloneNode(true);
-        document.querySelector('.ageChildrenForm').after(newSelectAge);
-      }
-      if (count >= 9) {
-        buttonPlus2.style.border = borderDesabled;
-        buttonPlus2.style.color = colorDesabled;
-      }
-      if (count < 10) {
-        buttonMinus2.style.border = borderActiv;
-        buttonMinus2.style.color = colorActiv;
-        count += 1;
-      }
-      countChildrenEl.textContent = count;
-    } else if (button === 'minus3') {
-      if (count > 0) {
-        count -= 1;
-      }
-      if (count === 0) {
-        buttonMinus3.style.border = borderDesabled;
-        buttonMinus3.style.color = colorDesabled;
-      }
-      if (count <= 30) {
-        buttonPlus3.style.border = borderActiv;
-        buttonPlus3.style.color = colorActiv;
-      }
-      countRoomsEl.textContent = count;
-    } else if (button === 'plus3') {
-      if (count >= 29) {
-        buttonPlus3.style.border = borderDesabled;
-        buttonPlus3.style.color = colorDesabled;
-      }
-      if (count < 30) {
-        buttonMinus3.style.border = borderActiv;
-        buttonMinus3.style.color = colorActiv;
-        count += 1;
-      }
-      countRoomsEl.textContent = count;
-    }
-  };
-};
-
-const count1 = countFunc();
-const count2 = countFunc();
-const count3 = countFunc();
+const count1 = countFunc(1);
+const count2 = countFunc(0);
+const count3 = countFunc(1);
 
 const updateFormPeople = (e) => {
   e.preventDefault();
